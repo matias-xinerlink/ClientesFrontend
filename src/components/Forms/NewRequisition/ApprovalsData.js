@@ -27,21 +27,22 @@ export const ApprovalsData = () => {
     }
 
     useEffect(() => {
-        console.log(process);
         setFormdata({ ...formdata, approvals: process })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [process])
 
     const [approvals, setApprovals] = useState([])
-    fetch(`${config.apiUrl}/solicitudes/aprobadores`, { method: 'GET', headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem('sessionToken') } })
-        .then(response => response.json())
-        .then(result => {
-            setApprovals(result)
-        })
-        .catch(error => {
-            console.log('[Error]', error)
-        });
 
+    useEffect(() => {
+        fetch(`${config.apiUrl}/solicitudes/aprobadores`, { method: 'GET', headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem('sessionToken') } })
+            .then(response => response.json())
+            .then(result => {
+                setApprovals(result)
+            })
+            .catch(error => {
+                console.log('[Error]', error)
+            });
+    }, [])
 
     return (
         <>
