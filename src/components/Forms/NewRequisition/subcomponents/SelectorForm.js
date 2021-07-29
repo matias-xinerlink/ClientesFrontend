@@ -11,7 +11,7 @@ export const SelectorForm = ({ label, extraLabel = '', formValue, formAttr, isCl
     const item = data.find(item => item.title === label);
 
     const options = item.options.map(option => {
-        return { value: option.id.toString(), label: option.title }
+        return { value: option.id.toString(), label: option.title.replace('GP -', '') }
     })
 
     const handleChange = (response) => {

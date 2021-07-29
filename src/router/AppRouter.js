@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/LoginPage'
 import { AuthProvider } from '../auth/AuthProvider'
 import { PrivateRouter } from './PrivateRouter'
 import { PublicRouter } from './PublicRouter'
+import { RequisitionPage } from '../pages/Requisitions/RequisitionPage'
 
 export const AppRouter = () => {
     return (
@@ -24,6 +25,7 @@ export const AppRouter = () => {
                             <Switch>
                                 <Route path="/inicio" exact component={HomePage} />
                                 <Route path="/solicitudes" exact component={AllRequestPage} />
+                                <Route path="/solicitudes/:requisition" exact component={RequisitionPage} />
                                 <Route path="/nueva-solicitud" exact component={NewRequestPage} />
                                 <Route path="/candidatos" exact component={CandidatesPage} />
                                 <Route path="/proyectos" exact component={ProjectsPage} />

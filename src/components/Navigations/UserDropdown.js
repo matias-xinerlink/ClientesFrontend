@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Media } from "reactstrap";
 import { useAuth } from '../../auth/useAuth';
+import { UserAvatar } from '../others/UserAvatar';
 
 export const UserDropdown = ({ showName = false }) => {
 
@@ -11,9 +12,7 @@ export const UserDropdown = ({ showName = false }) => {
         <UncontrolledDropdown nav>
             <DropdownToggle nav>
                 <Media className="align-items-center">
-                    <span className="avatar avatar-sm rounded-circle">
-                        <img alt="..." src={`https://ui-avatars.com/api/?name=${user.username}&background=19204D&color=fff`} />
-                    </span>
+                    <UserAvatar user={user}/>
                     {
                         showName && (
                             <Media className="ml-2 d-none d-lg-block">
