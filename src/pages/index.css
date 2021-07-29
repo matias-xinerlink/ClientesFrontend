@@ -1,0 +1,27 @@
+.load-image-loadingpage {
+    width: 80px;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.logo-loadingpage{
+    filter: grayscale(1);
+    width: 150px;
+    margin-top: 20px;
+}
+.logo-loginpage{
+    filter: brightness(0) invert(1);
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
