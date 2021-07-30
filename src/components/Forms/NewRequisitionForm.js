@@ -53,9 +53,9 @@ export const NewRequisitionForm = () => {
     return (
         <Form encType="multipart/form-data" onSubmit={handleSubmit}>
             <MainData />
-            <ReplacedData />
+            <ReplacedData setError={setError} />
             <hr />
-            <ReferredData referred={referred} setReferred={setReferred} />
+            <ReferredData referred={referred} setReferred={setReferred} setError={setError} />
             <hr />
             <ContactData />
             <hr />
@@ -64,7 +64,7 @@ export const NewRequisitionForm = () => {
             <ApprovalsData />
             <Input className="my-4 btn btn-primary btn-block mt-5" type="submit" value={'Crear Solicitud'} />
             {
-                error &&
+                (error && error !== 'Parece que uno de los RUT introducidos en el formulario es inválido, por favor revisa nuevamente.') &&
                 <ErrorModal msj={error} toggle={resetError} />
             }
             {

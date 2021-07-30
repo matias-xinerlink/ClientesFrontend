@@ -4,7 +4,7 @@ import { FormContext } from '../../../pages/NewRequestPage'
 import { InputForm } from './subcomponents/InputForm'
 import { TogglerSection } from './subcomponents/TogglerSection'
 
-export const ReferredData = ({ referred, setReferred }) => {
+export const ReferredData = ({ referred, setReferred, setError }) => {
 
     const { formdata, setFormdata } = useContext(FormContext);
 
@@ -30,7 +30,7 @@ export const ReferredData = ({ referred, setReferred }) => {
                         <h6 className="heading-small text-muted">Datos del referido/reemplazante</h6>
                         <Row className="p-lg-4">
                             <InputForm label="Nombre" formValue="referido" formAttr="nombre" />
-                            <InputForm label="RUT" formValue="referido" formAttr="rut" />
+                            <InputForm label="RUT" formValue="referido" formAttr="rut" setError={setError} />
                             <InputForm label="Email" type="email" formValue="referido" formAttr="mail" />
                             <InputForm label="Teléfono" formValue="referido" formAttr="telefono" />
                         </Row>

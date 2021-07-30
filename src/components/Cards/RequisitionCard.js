@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import { Loading } from '../others/Loading'
-import { TitleAndText } from '../others/TitleAndText'
 import { MainData } from './RequisitionComponents/MainData'
 import { ReemplazoData } from './RequisitionComponents/ReemplazoData'
 import { ReferredData } from './RequisitionComponents/ReferredData'
@@ -23,7 +22,10 @@ export const RequisitionCard = ({ data, requisitionId, loading }) => {
                         <small className="text-nowrap">Creada el <b>{data ? moment(data.createdAt).format('LLL') : '...'}</b> por <b>{data?.user.username}</b></small>
                     </Col>
                     <Col md="6" className="mt-3 mt-md-0 text-md-right">
-                        <RequisitionStatusBadge className="ml-auto" status={data.status} />
+                        {
+                            data &&
+                            <RequisitionStatusBadge className="ml-auto" status={data.status} />
+                        }
                     </Col>
                 </Row>
             </CardHeader>

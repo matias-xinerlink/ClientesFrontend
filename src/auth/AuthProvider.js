@@ -17,9 +17,8 @@ export const AuthProvider = (props) => {
             fetch(`${config.apiUrl}/auth/checkuser`, { method: 'GET', headers: { "x-access-token": localStorage.getItem('sessionToken') } })
                 .then(response => response.json())
                 .then(result => {
-                    if (!result.message) {
-                        setUser(result);
-                    }
+                    if (result.message) return localStorage.removeItem('sessionToken');
+                    setUser(result);
                     setLogginIn(false);
                 })
                 .catch(error => console.log('[Error]', error));

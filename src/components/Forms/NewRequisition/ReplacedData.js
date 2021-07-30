@@ -4,7 +4,7 @@ import { FormContext } from '../../../pages/NewRequestPage'
 import { InputForm } from './subcomponents/InputForm'
 import { SelectorForm } from './subcomponents/SelectorForm'
 
-export const ReplacedData = () => {
+export const ReplacedData = ({ setError }) => {
 
     const { formdata, setFormdata } = useContext(FormContext);
 
@@ -36,7 +36,7 @@ export const ReplacedData = () => {
                 <hr />
                 <h6 className="heading-small text-muted">Datos del trabajador a reemplazar</h6>
                 <Row className="p-lg-4">
-                    <InputForm label="RUT" formValue="reemplazo" formAttr="rut" />
+                    <InputForm label="RUT" formValue="reemplazo" formAttr="rut" setError={setError} />
                     <InputForm label="Nombre" formValue="reemplazo" formAttr="nombre" />
                     <SelectorForm label="Motivo de Reemplazo" formValue="reemplazo" formAttr="motivo" />
                     <InputForm label="Observaciones" formValue="reemplazo" formAttr="observaciones" type="textarea" />

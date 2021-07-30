@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
-import { Col, Input, Label } from 'reactstrap';
+import React, { useContext, useState } from 'react'
+import { Col, FormGroup, Input, Label } from 'reactstrap';
+import { rutEsValido } from '../../../../helpers/verificarRut';
 import { FormContext } from '../../../../pages/NewRequestPage';
 
-export const InputForm = ({ label, extraLabel = '', formValue, formAttr, type = 'text', xl = "6", lg = "6" }) => {
+export const InputForm = ({ label, extraLabel = '', formValue, formAttr, type = 'text', xl = "6", lg = "6", setError }) => {
 
     const { formdata, setFormdata } = useContext(FormContext);
+    const [rutError, setRutError] = useState(false)
 
     const handleInputChange = ({ target }) => {
         if (formAttr) {
@@ -23,12 +25,31 @@ export const InputForm = ({ label, extraLabel = '', formValue, formAttr, type = 
         else {
             setFormdata({ ...formdata, [formValue]: type === "number" ? parseInt(target.value) : target.value });
         }
+
+        if (label === 'RUT') {
+            if (rutEsValido(target.value)) {
+                setError(false);
+                setRutError(false)
+            }
+            else {
+                setError('Parece que uno de los RUT introducidos en el formulario es inválido, por favor revisa nuevamente.');
+                setRutError(true)
+            }
+        }
+
     }
 
     return (
         <Col lg={lg} xl={xl} className="mb-3">
             <Label className="form-control-label">{label + ' ' + extraLabel}</Label>
-            <Input className="styleInput" type={type} name={formValue} value={formdata.formValue} onChange={handleInputChange} required />
+            {
+                label === 'RUT' ?
+                    <FormGroup className={`${rutError && 'has-danger'}`}>
+                        <Input className={`styleInput ${rutError && 'is-invalid'}`} type={type} name={formValue} value={formdata.formValue} onChange={handleInputChange} required />
+                    </FormGroup>
+                    :
+                    <Input className="styleInput" type={type} name={formValue} value={formdata.formValue} onChange={handleInputChange} required />
+            }
         </Col>
     )
 }
