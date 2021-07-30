@@ -11,11 +11,19 @@ export const useFetch = (url) => {
         fetch(url, { method: 'GET', headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem('sessionToken') } })
             .then(resp => resp.json())
             .then(data => {
-
                 setState({
                     loading: false,
-                    error: null,
+                    error: false,
                     data
+                })
+
+            })
+            .catch(err => {
+                console.log(err);
+                setState({
+                    loading: false,
+                    error: true,
+                    data: null
                 })
 
             });

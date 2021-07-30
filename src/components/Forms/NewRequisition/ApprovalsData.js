@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Fade, Table } from 'reactstrap';
 import { config } from '../../../config/env'
+import { useFetch } from '../../../hooks/useFetch';
 import { FormContext } from '../../../pages/NewRequestPage';
 import { TogglerSection } from './subcomponents/TogglerSection';
 
@@ -31,18 +32,7 @@ export const ApprovalsData = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [process])
 
-    const [approvals, setApprovals] = useState([])
-
-    useEffect(() => {
-        fetch(`${config.apiUrl}/solicitudes/aprobadores`, { method: 'GET', headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem('sessionToken') } })
-            .then(response => response.json())
-            .then(result => {
-                setApprovals(result)
-            })
-            .catch(error => {
-                console.log('[Error]', error)
-            });
-    }, [])
+    const { data: approvals } = useFetch(`${config.apiUrl}/solicitudes/aprobadores`);
 
     return (
         <>

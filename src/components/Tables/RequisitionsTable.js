@@ -2,6 +2,7 @@ import moment from 'moment'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Badge, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import { RequisitionStatusBadge } from '../others/RequisitionStatusBadge'
 import { UserAvatar } from '../others/UserAvatar'
 
 export const RequisitionsTable = ({ data }) => {
@@ -32,10 +33,7 @@ export const RequisitionsTable = ({ data }) => {
                             </th>
                             <td>{moment(item.createdAt).format('LLL')}</td>
                             <td>
-                                <Badge color="" className="badge-dot mr-4">
-                                    <i className={`bg-${item.status === "Pendiente de Aprobación" ? 'warning' : 'primary'}`} />
-                                    {item.status}
-                                </Badge>
+                                <RequisitionStatusBadge status={item.status} />
                             </td>
                             <td>
                                 <UserAvatar user={item.user} tooltip={true} />

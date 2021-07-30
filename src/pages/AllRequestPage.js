@@ -9,8 +9,6 @@ export const AllRequestPage = () => {
 
     const { loading, data } = useFetch(`${config.apiUrl}/solicitudes`)
 
-    console.log(data);
-
     return (
         <Row>
             <Col>
