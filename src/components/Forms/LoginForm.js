@@ -50,7 +50,7 @@ export const LoginForm = () => {
             <div className="text-center">
                 <Input className="my-4 btn btn-primary btn-block" type="submit" value={checking ? 'Espere...' : 'Ingresar'} disabled={checking} />
             </div>
-            <Fade in={error}>
+            <Fade in={!!error}>
                 <Alert color="danger">
                     {error}
                 </Alert>
