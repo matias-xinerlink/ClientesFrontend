@@ -8,6 +8,7 @@ import { ReferredData } from './RequisitionComponents/ReferredData'
 import { JefaturaData } from './RequisitionComponents/JefaturaData'
 import { CargoData } from './RequisitionComponents/CargoData'
 import { RequisitionStatusBadge } from '../others/RequisitionStatusBadge'
+import { ApprovalsData } from './RequisitionComponents/ApprovalsData'
 
 export const RequisitionCard = ({ data, requisitionId, loading }) => {
     return (
@@ -46,6 +47,9 @@ export const RequisitionCard = ({ data, requisitionId, loading }) => {
                                 }
                                 <JefaturaData data={data} />
                                 <CargoData data={data} />
+                                {
+                                    data.approvals.length > 0 && <ApprovalsData data={data} />
+                                }
                             </>
                         )
 

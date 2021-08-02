@@ -1,9 +1,10 @@
 import moment from 'moment'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Table, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import { Table } from 'reactstrap'
 import { RequisitionStatusBadge } from '../others/RequisitionStatusBadge'
 import { UserAvatar } from '../others/UserAvatar'
+import { RequisitionsActions } from '../Navigations/RequisitionsActions'
 
 export const RequisitionsTable = ({ data }) => {
 
@@ -27,7 +28,9 @@ export const RequisitionsTable = ({ data }) => {
                             <th scope="row">
                                 <div className="d-flex align-items-center">
                                     <span className="mb-0 text-sm">
-                                        {item.title}
+                                        <Link to={'/solicitudes/' + item.id}>
+                                            {item.title}
+                                        </Link>
                                     </span>
                                 </div>
                             </th>
@@ -54,24 +57,7 @@ export const RequisitionsTable = ({ data }) => {
                                 }
                             </td>
                             <td>
-                                <UncontrolledDropdown>
-                                    <DropdownToggle
-                                        className="btn-icon-only text-light"
-                                        role="button"
-                                        size="sm"
-                                        color=""
-                                    >
-                                        <i className="fas fa-ellipsis-v" />
-                                    </DropdownToggle>
-                                    <DropdownMenu className="dropdown-menu-arrow" right>
-                                        <DropdownItem className="noti-title" header tag="div">
-                                            <h6 className="text-overflow m-0">¿Qué deseas hacer?</h6>
-                                        </DropdownItem>
-                                        <DropdownItem tag={Link} to={'/solicitudes/' + item.id}>
-                                            Ver Solicitud
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
+                                <RequisitionsActions requisition={item} />
                             </td>
                         </tr>
                     })
