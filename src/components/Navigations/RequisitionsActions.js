@@ -25,11 +25,11 @@ export const RequisitionsActions = ({ requisition }) => {
                 <i className="fas fa-ellipsis-v" />
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-arrow" right>
-                <DropdownItem className="noti-title" header tag="div">
-                    <h6 className="text-overflow m-0">¿Qué deseas hacer?</h6>
-                </DropdownItem>
                 <DropdownItem tag={Link} to={'/solicitudes/' + requisition.id}>
                     Ver Solicitud
+                </DropdownItem>
+                <DropdownItem tag={Link} to={'/candidatos/' + requisition.id}>
+                    Ver Candidatos
                 </DropdownItem>
                 {
                     (requisition.approvals.length > 0 && isApproval(requisition.approvals, user))

@@ -13,6 +13,7 @@ import { AuthProvider } from '../auth/AuthProvider'
 import { PrivateRouter } from './PrivateRouter'
 import { PublicRouter } from './PublicRouter'
 import { RequisitionPage } from '../pages/Requisitions/RequisitionPage'
+import { CandidatesListPage } from '../pages/Requisitions/CandidatesListPage'
 
 export const AppRouter = () => {
     return (
@@ -28,6 +29,7 @@ export const AppRouter = () => {
                                 <Route path="/solicitudes/:requisition" exact component={RequisitionPage} />
                                 <Route path="/nueva-solicitud" exact component={NewRequestPage} />
                                 <Route path="/candidatos" exact component={CandidatesPage} />
+                                <Route path="/candidatos/:requisition" exact component={CandidatesListPage} />
                                 <Route path="/proyectos" exact component={ProjectsPage} />
                                 <Route path="/dotacion" exact component={StaffingPage} />
                                 <Route path="/gestion" exact component={ManagementPage} />

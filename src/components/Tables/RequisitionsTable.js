@@ -9,10 +9,11 @@ import { RequisitionsActions } from '../Navigations/RequisitionsActions'
 export const RequisitionsTable = ({ data }) => {
 
     return (
-        <Table className="align-items-center min-h-100" style={{ minHeight: 100 }}>
+        <Table className="align-items-center h-min-100" style={{ zIndex: 10 }} responsive>
             <thead className="thead-light">
                 <tr>
                     <th scope="col">Solicitud</th>
+                    <th scope="col">Proyecto</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Creada por</th>
@@ -34,6 +35,7 @@ export const RequisitionsTable = ({ data }) => {
                                     </span>
                                 </div>
                             </th>
+                            <td>{item.project}</td>
                             <td>{moment(item.createdAt).format('LLL')}</td>
                             <td>
                                 <RequisitionStatusBadge status={item.status} />
